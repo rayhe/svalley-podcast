@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>svalley podcast — AI CEOs Discuss Things That Matter</title>
+<meta name="description" content="Tech's most powerful voices discuss topics they probably shouldn't. AI-generated. Surprisingly informative.">
+<meta property="og:title" content="svalley podcast">
+<meta property="og:description" content="AI CEOs discuss things that matter. Surprisingly informative.">
+<meta property="og:url" content="https://podcast.svalley.org">
+<meta property="og:site_name" content="svalley">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0c;
+  --surface: #131318;
+  --surface-hover: #1a1a22;
+  --border: #2a2a35;
+  --text: #e8e6e3;
+  --text-muted: #8a8898;
+  --accent: #ff2d55;
+  --accent-orange: #ff6b2b;
+  --accent-gradient: linear-gradient(135deg, #ff2d55, #ff6b2b);
+  --accent-glow: rgba(255, 45, 85, 0.15);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { filter: brightness(1.3); }
+
+/* Header */
+header {
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 10, 12, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.header-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: -1px;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+}
+
+.logo-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.back-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+.back-link:hover { color: var(--text); }
+
+/* Hero */
+.hero {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 24px 40px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+
+.hero h1 .gradient {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Episodes */
+.episodes {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+.episodes-header {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.episode-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  margin-bottom: 16px;
+  transition: border-color 0.2s, background 0.2s;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+.episode-card:hover {
+  border-color: var(--accent);
+  background: var(--surface-hover);
+  filter: none;
+}
+
+.episode-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.episode-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  background: var(--accent-glow);
+  color: var(--accent);
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.episode-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.episode-duration {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.episode-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.episode-voices {
+  font-size: 0.85rem;
+  color: var(--accent-orange);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.episode-desc {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 24px;
+  text-align: center;
+}
+
+footer p {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+footer a {
+  color: var(--text-muted);
+}
+footer a:hover { color: var(--text); }
+
+/* Scanline overlay */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.03) 2px,
+    rgba(0,0,0,0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@media (max-width: 600px) {
+  .hero h1 { font-size: 1.7rem; }
+  .hero { padding: 40px 20px 30px; }
+  .episodes { padding: 0 16px 60px; }
+  .episode-card { padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div>
+      <a href="/" class="logo">svalley podcast</a>
+      <div class="logo-sub">AI CEOs discuss things that matter</div>
+    </div>
+    <a href="https://svalley.org" class="back-link">← svalley.org</a>
+  </div>
+</header>
+
+<div class="hero">
+  <h1>Tech's most powerful voices<br>discuss topics they <span class="gradient">probably shouldn't</span></h1>
+  <p>AI-generated conversations between the people running Silicon Valley. Surprisingly informative. Definitely not endorsed.</p>
+</div>
+
+<div class="episodes">
+  <div class="episodes-header">Episodes</div>
+
+  <a href="episodes/001-standing-desks.html" class="episode-card">
+    <div class="episode-meta">
+      <span class="episode-number">#001</span>
+      <span class="episode-date">Jun 4, 2026</span>
+      <span class="episode-duration">10 min</span>
+    </div>
+    <div class="episode-title">Standing Desks: One Baby Carrot</div>
+    <div class="episode-voices">🎙️ AI Mark Zuckerberg &amp; AI Andrew Bosworth</div>
+    <div class="episode-desc">Mark discovers that three hours of standing burns exactly one baby carrot worth of calories. Boz is devastated. They proceed to dismantle the entire standing desk industry, reveal that most brands use the same Chinese motors, and argue about wobble.</div>
+  </a>
+
+</div>
+
+<footer>
+  <p>All voices are AI-generated. No real CEOs were consulted or harmed.<br>
+  <a href="https://svalley.org">svalley.org</a></p>
+</footer>
+
+</body>
+</html>

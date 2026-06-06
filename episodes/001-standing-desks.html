@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#001: Standing Desks — One Baby Carrot — svalley podcast</title>
+<meta name="description" content="AI Mark and AI Boz discover that three hours of standing burns one baby carrot of calories, then dismantle the entire standing desk industry.">
+<meta property="og:title" content="Standing Desks: One Baby Carrot — svalley podcast #001">
+<meta property="og:description" content="AI Mark and AI Boz discover that three hours of standing burns one baby carrot of calories.">
+<meta property="og:url" content="https://podcast.svalley.org/episodes/001-standing-desks.html">
+<meta property="og:site_name" content="svalley podcast">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0c;
+  --surface: #131318;
+  --surface-hover: #1a1a22;
+  --border: #2a2a35;
+  --text: #e8e6e3;
+  --text-muted: #8a8898;
+  --accent: #ff2d55;
+  --accent-orange: #ff6b2b;
+  --accent-gradient: linear-gradient(135deg, #ff2d55, #ff6b2b);
+  --accent-glow: rgba(255, 45, 85, 0.15);
+  --mark: #4da6ff;
+  --boz: #ff6b2b;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { filter: brightness(1.3); }
+
+header {
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 10, 12, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.header-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: -1px;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+}
+
+.back-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.back-link:hover { color: var(--text); }
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.ep-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.ep-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  background: var(--accent-glow);
+  color: var(--accent);
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.ep-date, .ep-duration {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.voices {
+  font-size: 0.9rem;
+  color: var(--accent-orange);
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+/* Player */
+.player {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 40px;
+}
+
+.player audio {
+  width: 100%;
+  height: 48px;
+  border-radius: 8px;
+  outline: none;
+}
+
+.player-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Transcript */
+.transcript-header {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.line {
+  margin-bottom: 16px;
+  padding-left: 16px;
+  border-left: 2px solid var(--border);
+}
+
+.line.mark { border-left-color: var(--mark); }
+.line.boz { border-left-color: var(--boz); }
+
+.speaker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.speaker.mark { color: var(--mark); }
+.speaker.boz { color: var(--boz); }
+
+.line p {
+  color: var(--text);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 24px;
+  text-align: center;
+}
+
+footer p {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@media (max-width: 600px) {
+  h1 { font-size: 1.5rem; }
+  .container { padding: 30px 16px 60px; }
+  .player { padding: 16px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">svalley podcast</a>
+    <a href="/" class="back-link">← all episodes</a>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="ep-meta">
+    <span class="ep-number">#001</span>
+    <span class="ep-date">Jun 4, 2026</span>
+    <span class="ep-duration">10 min</span>
+  </div>
+
+  <h1>Standing Desks: One Baby Carrot</h1>
+  <div class="voices">🎙️ AI Mark Zuckerberg &amp; AI Andrew Bosworth</div>
+
+  <div class="player">
+    <div class="player-label">▶ Listen</div>
+    <audio controls preload="metadata">
+      <source src="../audio/001-standing-desks.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <div class="transcript-header">Transcript</div>
+
+  <div class="line mark">
+    <div class="speaker mark">Mark</div>
+    <p>Hey Boz, so I just went down this massive rabbit hole on standing desks. Like, deep. Reddit threads, actual research papers, the whole thing. And I have to tell you, most of what people think about standing desks is wrong.</p>
+  </div>
+
+  <div class="line boz">
+    <div class="speaker boz">Boz</div>
+    <p>Wrong how? I have a standing desk. I feel like I'm living my best life.</p>
+  </div>
+
+  <div class="line mark">
+    <div class="speaker mark">Mark</div>
+    <p>Okay, so here's the first one that's going to blow your mind. Standing desks do not burn meaningful calories.</p>
+  </div>
+
+  <div class="line boz">
+    <div class="speaker boz">Boz</div>
+    <p>What? No, that can't be right. I've seen the marketing. "Burn up to three hundred extra calories a day." I've definitely seen that number.</p>
+  </div>
+
+  <div class="line mark">
+    <div class="speaker mark">Mark</div>
+    <p>Total myth. Harvard looked at this. Sitting burns about eighty calories an hour. Standing burns eighty-eight. That's eight extra calories per hour, Boz. Three hours of standing burns twenty-four extra calories. You know what that is? One baby carrot.</p>
+  </div>
+
+  <div class="line boz">
+    <div class="speaker boz">Boz</div>
+    <p>One baby carrot. Three hours of standing. For one baby carrot.</p>
+  </div>
+
+  <div class="line mark">
+    <div class="speaker mark">Mark</div>
+    <p>One baby carrot. A University of Bath study put it at nine calories per hour difference. A meta-analysis in the European Journal of Preventive Cardiology pooled forty-six studies and found standing burns zero point one five extra calories per minute. On a scale of zero to one hundred where sitting is zero and running is one hundred, standing is about a five.</p>
+  </div>
+
+  <div class="line boz">
+    <div class="speaker boz">Boz</div>
+    <p>Okay, so if it's not about calories, why do people keep buying these things? Like, they're not cheap.</p>
+  </div>
+
+  <div class="line mark">
+    <div class="speaker mark">Mark</div>
+    <p>Because there are real benefits, they're just different from what the marketing says. The CDC ran a study called Take-a-Stand and found that sit-stand workstations significantly reduced upper back and neck pain. And here's the interesting part, when they took the desks away, the improvements vanished. People got more fatigued, their mood scores dropped. So there's something real happening, it's just not about weight loss.</p>
+  </div>
+
+  <div class="line boz">
+    <div class="speaker boz">Boz</div>
+    <p>I will say, my neck does feel way better since I started standing for part of the day. So what's the right amount of standing then? Because I've heard everything from "stand all day" to "twenty minutes per hour."</p>
+  </div>
+
+  <div class="line mark">
+    <div class="speaker mark">Mark</div>
+    <p>So there's this guy, Alan Hedge, professor of ergonomics at Cornell. He developed what's called the twenty-eight-two rule. Every thirty minutes, you do twenty minutes sitting, eight minutes standing, and two minutes walking or stretching.</p>
+  </div>
+
+  <div class="line boz">
+    <div class="speaker boz">Boz</div>
+    <p>That seems like a lot of sitting still.</p>
+  </div>
+
+  <div class="line mark">
+    <div class="speaker mark">Mark</div>
+    <p>Right? But the research backs it up. The key insight is that it's not about sitting being evil or standing being good. It's about breaking static posture. Staying in any one position for too long is the problem. OSHA specifically identifies prolonged static postures as a risk factor. So the frequency of change matters more than the ratio itself.</p>
+  </div>
+
+  <div class="line boz">
+    <div class="speaker boz">Boz</div>
+    <p>Okay, so what about the desks themselves? Because this is where it gets really interesting for me. There are like a hundred options on Amazon that all look the same.</p>
+  </div>
+
+  <div class="line mark">
+    <div class="speaker mark">Mark</div>
+    <p>And that's because they literally are the same. Here's the dirty secret of the standing desk industry. A company called Jiecang, based in Zhejiang, China, makes the lifting columns and motors for a huge percentage of standing desk brands.</p>
+  </div>
+
+  <div class="line boz">
+    <div class="speaker boz">Boz</div>
+    <p>Wait, which brands?</p>
+  </div>
+
+  <div class="line mark">
+    <div class="speaker mark">Mark</div>
+    <p>Uplift V2. Fully Jarvis. Autonomous. Most of those random Amazon brands like Fezibo and VIVO. WorkWhileWalking dot com did lab testing and confirmed that the Jarvis and Uplift frames are quote "essentially the same Jiecang unit with only a slight variation in the foot design."</p>
+  </div>
+
+  <div class="line boz">
+    <div class="speaker boz">Boz</div>
+    <p>So what are you actually paying for when you spend seven hundred dollars versus two hundred dollars?</p>
+  </div>
+
+  <div class="line mark">
+    <div class="speaker mark">Mark</div>
+    <p>You're paying for heavier feet, which means more stability. Thicker steel gauge. Better quality control. Better desktops. And critically, warranty and customer service. The motors might come from the same factory, but a two hundred dollar desk has three-pound feet and a seven hundred dollar desk has nine-pound feet. That weight difference at the base directly translates to less wobble when you're standing and typing.</p>
+  </div>
+
+  <div class="line boz">
+    <div class="speaker boz">Boz</div>
+    <p>Wobble is the thing, right? That's what everyone complains about.</p>
+  </div>
+
+  <div class="line mark">
+    <div class="speaker mark">Mark</div>
+    <p>It's the number one complaint. When you raise a desk to forty-five or forty-eight inches, you've got two thin metal columns supporting a sixty-inch wide desktop with thirty pounds of monitors on it. Physics wins. Everything wobbles to some degree. The question is how much.</p>
+  </div>
+
+  <div class="line boz">
+    <div class="speaker boz">Boz</div>
+    <p>So which desk would you actually buy?</p>
+  </div>
+
+  <div class="line mark">
+    <div class="speaker mark">Mark</div>
+    <p>Okay, for most people, the FlexiSpot E seven Pro on sale for four hundred to four fifty is the answer. Dual motor, four hundred forty pound capacity, fifteen-year frame warranty. Reddit consensus pick. The value is unbeatable.</p>
+  </div>
+
+  <div class="line boz">
+    <div class="speaker boz">Boz</div>
+    <p>But you wouldn't buy that.</p>
+  </div>
+
+  <div class="line mark">
+    <div class="speaker mark">Mark</div>
+    <p>No, I wouldn't buy that.</p>
+  </div>
+
+  <div class="line boz">
+    <div class="speaker boz">Boz</div>
+    <p>What would you buy?</p>
+  </div>
+
+  <div class="line mark">
+    <div class="speaker mark">Mark</div>
+    <p>If I'm spending my own money and I care about zero wobble, DeskHaus Apex Pro. Uses Linak columns from Denmark, not Chinese OEM. Twenty-year warranty. Ships from Michigan. The owner has a YouTube channel where he tears apart competitors' desks and weighs their components. It's like if someone started a standing desk company purely out of spite for how bad everyone else's desks were.</p>
+  </div>
+
+  <div class="line boz">
+    <div class="speaker boz">Boz</div>
+    <p>That's extremely on-brand for you.</p>
+  </div>
+
+  <div class="line mark">
+    <div class="speaker mark">Mark</div>
+    <p>The Reddit standing desk community treats it like the enthusiast pick. People say things like "doesn't even wobble" and "sturdiest desk I've found." It's eight hundred to fourteen hundred dollars, and most people don't need it. But if you have an ultrawide monitor on a heavy arm and you type hard, it's the answer.</p>
+  </div>
+
+  <div class="line boz">
+    <div class="speaker boz">Boz</div>
+    <p>What about Autonomous? I feel like they had a big marketing push a few years ago. I see their ads everywhere.</p>
+  </div>
+
+  <div class="line mark">
+    <div class="speaker mark">Mark</div>
+    <p>Hard skip. WorkWhileWalking's assessment is devastating. Quote: "massive financial backing and a scorched-earth discount pricing strategy, targeting the market from the bottom up with super low-priced, super low-quality offerings." They switched Chinese factories multiple times and could never improve quality. They paid customers to leave five-star reviews on their own site. Thousands of complaints on Reddit about terrible customer service and obstacles to refunds.</p>
+  </div>
+
+  <div class="line boz">
+    <div class="speaker boz">Boz</div>
+    <p>Yikes. At that price point you could just get the FlexiSpot.</p>
+  </div>
+
+  <div class="line mark">
+    <div class="speaker mark">Mark</div>
+    <p>Exactly. There's no reason to buy Autonomous when FlexiSpot exists at the same price with better build quality and better reviews.</p>
+  </div>
+
+  <div class="line boz">
+    <div class="speaker boz">Boz</div>
+    <p>Okay, so we've got the desk. What else do I need?</p>
+  </div>
+
+  <div class="line mark">
+    <div class="speaker mark">Mark</div>
+    <p>Anti-fatigue mat. This is non-negotiable. Literally every standing desk subreddit thread mentions it. A twenty twenty-five study in Applied Ergonomics found that standing mats reduce subjective low back pain by forty-seven percent in pain-prone people and increase beneficial micro-movements by thirty-eight to forty-six percent. Budget thirty to fifty bucks. It will outlast your desk.</p>
+  </div>
+
+  <div class="line boz">
+    <div class="speaker boz">Boz</div>
+    <p>What about the cable management thing? I see people complaining about that.</p>
+  </div>
+
+  <div class="line mark">
+    <div class="speaker mark">Mark</div>
+    <p>Cable management is the second most common mistake. When your desk goes up and down, every cable moves with it. Without a cable tray, cables snag on things, pull monitors off desks, catch on chair arms. One person on Reddit said a snagged cable pulled their external drive right off the desk onto the floor. Buy a cable management tray and velcro ties before the desk arrives.</p>
+  </div>
+
+  <div class="line boz">
+    <div class="speaker boz">Boz</div>
+    <p>And monitor height? Because I noticed when I stand, my monitor is suddenly way below my eyes.</p>
+  </div>
+
+  <div class="line mark">
+    <div class="speaker mark">Mark</div>
+    <p>You need a monitor arm that adjusts for both positions, or you need separate presets for your monitor arm height. Your monitor's top edge should be at or slightly below eye level in both sitting and standing positions. If you have a heavy monitor, get a gas-spring arm rated for the weight, not a cheap one.</p>
+  </div>
+
+  <div class="line boz">
+    <div class="speaker boz">Boz</div>
+    <p>Last question. What about the back pain claims? Because I've heard standing desks fix back pain, and I've also heard they make it worse.</p>
+  </div>
+
+  <div class="line mark">
+    <div class="speaker mark">Mark</div>
+    <p>It depends on what kind of back pain. For general "my back hurts from sitting at a desk all day" discomfort, sit-stand desks are well supported by research. Upper back, neck, shoulders, forward head posture. All improve with alternating positions. But if you have a disc herniation, standing can increase intradiscal pressure. Spinal stenosis often gets worse with standing. Conditions that need spinal flexion for relief won't benefit. So if you have a diagnosed spinal condition, talk to your doctor. But for the vast majority of office workers with generic sitting-related back pain, a sit-stand desk with the twenty-eight-two pattern is a legitimate improvement.</p>
+  </div>
+
+  <div class="line boz">
+    <div class="speaker boz">Boz</div>
+    <p>So to summarize: standing desks won't help you lose weight, but they will help your back and your mood. Most brands use the same Chinese motors. Spend at least four hundred dollars on a dual-motor desk with heavy feet. Get an anti-fatigue mat. Don't stand for eight hours on day one. And manage your cables.</p>
+  </div>
+
+  <div class="line mark">
+    <div class="speaker mark">Mark</div>
+    <p>That's the whole thing. The entire standing desk industry in sixty seconds. Everything else is marketing.</p>
+  </div>
+
+  <div class="line boz">
+    <div class="speaker boz">Boz</div>
+    <p>I'm going to go adjust my desk to exactly the right height now.</p>
+  </div>
+
+  <div class="line mark">
+    <div class="speaker mark">Mark</div>
+    <p>Twenty minutes sitting. Eight minutes standing. Two minutes walking. Set a timer.</p>
+  </div>
+
+  <div class="line boz">
+    <div class="speaker boz">Boz</div>
+    <p>One baby carrot.</p>
+  </div>
+
+  <div class="line mark">
+    <div class="speaker mark">Mark</div>
+    <p>One baby carrot.</p>
+  </div>
+
+</div>
+
+<footer>
+  <p>All voices are AI-generated. No real CEOs were consulted or harmed.<br>
+  <a href="https://svalley.org">svalley.org</a></p>
+</footer>
+
+</body>
+</html>
